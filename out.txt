@@ -1,0 +1,310 @@
+12A B S T R A C T
+Customer churn is a critical challenge  for telecom companies, as losing subscribers directly
+impacts revenue and growth. This study investigates the demographic, financial, and
+service-related factors that influence churn behavior. To begin, an exploratory analysis was
+carried out using bar charts, pie charts, histograms, and box plots to visualize customer
+characteristics and churn patterns.  These plots provided initial insights into variable
+distributions and highlighted potential associations worth testing.
+To formally assess these relationships, categorical variables were analyzed using the Chi-
+squared test, while the Shapiro–W ilk test was applied to numerical variables to check
+normality and determine whether parametric or non-parametric tests were appropriate.
+The results show that demographic factors such as SeniorCitizen and Dependents, as well
+as service features including InternetService, OnlineSecurity, TechSupport, StreamingT V,
+and StreamingMovies, have a significant association with churn. In contrast, PhoneService
+does not show a meaningful impact. Company policy-related features such as Contract and
+PaymentMethod also strongly influen ce customer retention. Normality tests revealed that
+numerical variables do not follow a normal distribution at the 5% significance level,
+requiring non-parametric approaches. Hypothesis testing further indica ted that there is
+insufficient statistical evidence to conclude that churned customers differ from retained
+customers in terms of tenure, MonthlyCharges, or T otalCharges.
+Overall, the analysis highlights that churn is driven more by service quality, contract type,
+and customer demographics than by cost alone. These findings sugges t that improving
+support services, offering flexible contracts, and tailoring engageme nt strategies for
+vulnerable customer groups can help reduce churn and strengthen customer loyalty.Table of Contents4INTRODUCTION
+Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Vestibulum auctor nunc vitae
+diam eleifend, in maximus metus sollicitudin.
+4DATA
+Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Vestibulum auctor nunc vitae
+diam eleifend, in maximus metus sollicitudin.
+3DATA ANALYSIS
+Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Vestibulum auctor nunc vitae
+diam eleifend, in maximus metus sollicitudin.
+5DATA ANALYSIS
+Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Vestibulum auctor nunc vitae
+diam eleifend, in maximus metus sollicitudin.
+10GENERAL DISCUSSION AND
+CONCLUSION
+Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Vestibulum auctor nunc vitae
+diam eleifend, in maximus metus sollicitudin.
+Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Vestibulum auctor nunc vitae
+diam eleifend, in maximus metus sollicitudin.
+3I N T R O D U C T I O N
+Background of the study
+This data set contains customer details of telecommunication company called “SpeedyCall” which is
+in USA. In this analysis we are interested to know whether a customer will churn or not according to
+customer behavior.
+objectives
+To examine the impact of demographic variables on customer churn and use visualizations to
+analyze churn patterns across other key variables .
+To evaluate the impact of financial factors on customer churn.
+To analyze how service-related features influence customer churn (eg - PhoneService,
+InternetService, OnlineSecurity, T echSupport).
+To analyze how value-added service features influence customer churn (eg - StreamingT V,
+StreamingMovies).
+To evaluate how organizational policy-based variables impact customer satisfaction (eg -
+Contract, PaymentMethod, MonthlyCharges), which are some of the key variables related to
+company policies.
+significance of the study
+Understanding customer churn is crucial for telecommunication companies because acquiring new
+customers is significantly more expensive than retaining existing ones. A churn analysis helps the
+company identify patterns and key factors such as service quality, pricing, contract type, or
+customer support, that lead customers to discontinue their services. By studying churn,  
+telecommunication companies can predict customer behavior, implement targeted retention
+strategies, improve customer satisfaction, and optimize business policies. Ultimately, churn analysis
+enables the company to reduce revenue loss, maintain a stable customer base, and gain a
+competitive advantage in a highly saturated market.
+D A T A
+Focusing on the most relevant features allows for a clearer, more interpretable model that
+highlights actionable drivers of churn.
+ABOUT VARIABLES
+SeniorCitizen – Whether the customer is a senior citizen or not (Categorical variable - 1, 0)         
+Dependents - Whether the customer has dependents or not (Categorical variable - Y es,
+No)
+tenure - Number of months the customer has stayed with the company (measured in
+months - Numerical variable).  
+4PhoneService -  Whether the customer has a phone service or not. (Categorical
+variable - Y es, No)
+InternetService - Customer’ s internet service provider.  (Categorical variable -
+DSL,Fiber optic, No)  
+OnlineSecurity - Whether the customer has online security or not. (Categorical
+variable - Y es, No, No internet service)
+T echSupport - Whether the customer has tech support or not. (Categorical variable -
+Yes, No, No internet service)
+StreamingT V - Whether the customer has streaming T V or not. (Categorical variable
+- Yes, No, No internet service)
+StreamingMovies - Whether the customer has streaming movies or not. (Categorical
+variable - Y es, No, No internet service)Contract -  The contract term of the customer (Categorical variable - Month-to-
+month, One year, T wo year)
+PaymentMethod -  The customer’ s payment method (Categorical variable - Electronic
+check, Mailed check, Bank transfer (automatic), Credit card (automatic))
+MonthlyCharges - The amount charged to the customer monthly. (Numerical
+variable)
+T otalCharges - The total amount charged to the customer. (Numerical variable)
+Churn - This is the target variable that indicates whether the customer churned or not
+(Yes or No)
+Data preprocessing
+Removed redundant or irrelevant variables to simplify the dataset and focus on key
+features. (removed variables - gender, Partner, MultipleLines, OnlineBackup,
+DeviceProtection, PaperlessBilling)
+In this dataset, there are 11 missing values in the T otalCharges variable. Therefore,
+records corresponding to those missing values are deleted. There are a very small
+number of missing values compared to the number of observations, they can be safely
+removed without requiring further investigation.
+Boxplots were generated for all numerical variables, and since no outliers were
+observed, no action is required.Customer dataset of Speedy Call company initially had 7043 observations and 21 variables.
+The dataset contains both numerical and categorical variables. Out of the 21 variables, 3 are
+numerical and the remaining are categorical (nominal or ordinal).
+Now cleaned data set have 7032 observations and 14 variables.  
+D a t a  A n a l y s i s
+Analysis categorical variables
+Figur e 1: Bar chart for Senior Citizen
+This bar chart ( Figur e 1) clearly   shows that
+majority of individuals in the data set are not
+senior citizens.(In USA   people who are older
+than 65 years are consider as senior citizens).
+Senior citizens may rely less on these services,
+resulting in their lower representation in the
+churn dataset. In addition, the percentage
+(17.3% ) of senior citizens in the country is lower
+compared to that of the younger population.
+5This pie chart ( Figur e 2) shows that 70% of
+customers do not have dependents. Therefore
+majority of individuals in this data set do not
+have obligation of a family.  
+Figur e 2 :Pie chart for De pendentsFigur e 3 :Pie chart for Phone Service
+This pie chart ( Figur e 3) indicates that the
+majority of customers of the company have the
+company’ s phone service, accounting for
+90.32% of the customer base. This suggests that
+most customers rely on the phone service,
+which may be a key factor in analyzing usage
+patterns and churn behavior.
+Figur e 4 :Pie chart for Internet Servi ce
+Figur e 5:Bar chart for Online Secur i ty
+The majority of customers rely on this
+company for internet service as well,
+with only 21.6% of customers not
+having an internet connection from
+Speedy Call. So, customer churn may
+be associated with this variable.Above bar graph ( Figur e 5) clearly
+depicts that the majority of
+customers(49.7%) have not
+subscribed to the online security
+service.
+Figur e 6:Pie chart for T echSupport  
+78.4% of customers receive their
+internet service from Speedy Call.
+However, among those with an internet
+connection, 49.4% have not subscribed
+to the company’ s Tech Support service.
+6
+Figur e 7:Bar chart for Str eaming TV
+Figur e 8:Bar chart for Str eaming Movies
+Bar chart for StreamingMovies ( F i g u r e  8) has
+the same characteristics as StreamingTV. If
+we were to fit a logistic regression model, this
+situation may cause redundancy. However, in
+our analysis, both should be kept since they
+are important services for the company’s
+customers. Improving these value-added
+services may help reduce customer churn.Above bar chart ( Figur e 7)
+clearly shows that the majority
+of customers do not have
+Streaming T V service, as well as
+internet connection (since
+streaming T V is not possible
+without an internet connection).7
+Figur e 9:Pie chart for Contr act
+F i g u r e  1 0  : P i e  c h a r t  f o r  P a y m e n t  M e t h o dFigur e 9 depicts that majority of
+customers (55.1%) are on month-to-
+month contracts, followed by two-
+year contracts at 24%, and one-year
+contracts at 20.9%. This suggests that
+most customers prefer short-term
+flexibility, which may correlate with
+higher churn risk.Figur e 10  shows that about one-third of
+customers use electronic check the most,
+while the other payment methods are used
+by customers in almost equal amounts.
+Figur e 11 :Pie chart for churn  
+Figur e 11  shows   that most customers
+stayed, but more than a quarter left,
+which is important for the  company to
+address.
+Analysis of numerical variables
+These two boxplots clearly show that
+the median tenure of churned
+customers is significantly lower than
+that of retained customers. Therefore,
+customers are more likely to churn in
+the early months of service. There are
+some outliers in “Y es” category and that
+category is right skewed.  
+Figur e 12 :Boxplot for Customer T enur e
+categor ized by Churn
+Figur e 14 :Output of Shapir o test
+Both the histogram ( F i g u r e  1 3) and the
+Shapiro–Wilk test ( F i g u r e  1 4) indicate that
+Monthly Charges do not follow a normal
+distribution. (Since R does not support the
+Shapiro test for samples larger than 5000,
+the test was performed on a random sample
+of 5000 observations).
+Figur e 13 :Histogr am for Monthly Char gesMonthly ChargesRejection criteria: if p < alpha then reject null
+hypothesis.
+let significance level = 5%
+8Plots for T otal Charges
+Histogram for Total Charges ( F i g u r e  1 6) clearly depicts that the variable does not follow a normal
+distribution, showing a right-skewed pattern. The boxplots show that the median Total Charges of
+retained customers is higher than that of churned customers. This is likely because customers
+with higher tenure tend to have lower tendency to churn.
+The boxplot ( F i g u r e  1 5) for Monthly
+Charges by churn category shows that
+churned customers have a higher median
+monthly charge than retained customers.
+This suggests that higher monthly
+charges may be a reason for customer
+churn.
+Hypothesis tests and Interpretations
+Evaluating Demographic Influences on Customer Churn Using the Chi-Squared T est
+Figur e 15:Boxplot for Monthly Char ges
+categor ized by Churn
+Figur e 16:Histogr am for T otal Char ges
+F igur e 17:Boxplot for T otal Char ges
+categor ized by churn
+Figur e 18:Senior Citizen(Out put of chi squar ed test)  
+Figur e 19 :Dependents(Output of chi squar ed test)  
+H : No relationship between the variables. 0
+H : There is a relationship between the variables. 1
+So, 2.2e-16 <0.05 therefore we have enough evidence to reject null hypothesis at 5% level of significance.
+Therefore, we can conclude that both Senior Citizen and Dependents have significant association with
+customer churn.                                
+Understanding Customer Churn Through Service Subscription Patterns: A Chi-Square Approach
+Figur e 20: phone service (output of chi squar e test)
+Figur e 21: Internet service (output of chi squar ed test)
+F i g u r e  2 2 :  O n l i n e  S e c u r i t y  ( o u t p u t  o f  c h i
+s q u a r e d  t e s t )  
+Figur e 23:T ech Support (Chi squar ed output)
+F i g u r e  2 4 :  S t r e a m i n g  T V ( o u t p u t  o f  c h i  s q u a r e d  t e s t )
+Figur e 25: Str eaming Movies (output of chi squar ed test)9Using above figures (20, 21, 22, 23, 24, 25) we can conclude that only Phone service( F i g u r e  2 0) is not
+significant, all the other variables ( F i g u r e  2 1 ,  2 2 ,  2 3 ,  2 4   a n d  2 5) shows a significant association with
+churn at 5% level of significance.
+Hypothesis tests regarding numerical variables
+Figur e 29: T enur e (output of Shapir o test)
+Figur e 30: Monthly Char ges (output of Shapir o test)
+Figur e 31: T otal char ges (output of Shapir o test)
+Above three figures (figure 26,27 and 28) shows that all numerical variables do not follow a normal
+distribution at 5% level of significance. Therefore we need to use non parametric-tests.  
+Tenure-Based Churn Analysis: Non-Parametric Approach
+H₀: Median tenure of churned customers ≥ median tenure of retained cust omers
+H₁: Median tenure of churned customers < median tenure of retained cust omers
+F i g u r e  3 2 :  M e d i a n  T e n u r e  v s .  C h u r n  ( W i l c o x o n  T e s t )  
+Significance level - 5%
+Rejection criteria: If U <= critical value then reject H 0
+or If p <= alpha then reject H  0
+p = 1 > 0.05 therefore we do not reject null hypothesis at 5% level of significance.  
+We do not have sufficient statistical evidence to support the claim that churned customers have
+shorter tenure than retained customers.
+Monthly Charges - Based Churn Analysis: Non-Parametric Approach
+H₀: Median Monthly Charges of churned customers ≤ median of retained customers.
+H₁: Median Monthly Charges of churned customers > median of retained customers.
+p = 1 > 0.05, therefore, we do not have
+enough evidence to reject the null hypothesis
+at the 5% level of significance. Hence, we
+conclude that we cannot confirm churned
+customers have higher Monthly Charges than
+retained customers.
+Total Charges -   Based Churn Analysis: Non parametric Approach
+H₀: Median T otal Charges of churned customers ≥ median T otal Charges o f retained customers.
+H₁: Median T otal Charges of churned customers < median T otal Charges o f retained customers.F i g u r e  3 3 :  M o n t h l y  C h a r g e s   V s .  C h u r n  ( W i l c o x o n
+T e s t )  
+p = 1 > 0.05, therefore, we do not have
+enough evidence to reject null hypothesis at
+5% level of significance. Therefore, we do
+not have enough evidence to conclude that
+churned customers have lower median T otal
+Charges.Checking Churn Link with Company Policy Features Using Chi-Squared T est
+Figur e 34: T otal Char ges V s Churn(W ilcoxon T est)
+Figur e 26: Contr act (chi squar ed test output)
+Figur e 27: Payment Method (chi squar ed test
+output)
+All above p- values are less than 0.05, therefore we have enough evidence to conclude that there is
+significant association between above each variable and customer churn.
+Contract and PaymentMethod  show a significant association with churn, indicating that company policy-
+related features can strongly influence customer retention.G e n e r a l  D i s c u s s i o n  a n d  C o n c l u s i o n
+Demographic variables such as SeniorCitizen and Dependents show a significant association
+with customer churn, indicating that age-related status and family responsibilities may
+influence churn behavior.
+Financial factors like Monthly Charges and T otal Charges showed no significant difference
+between churned and retained customers, suggesting cost alone may not drive churn.
+Service features like InternetService, OnlineSecurity, and T echSupport show a strong link to
+churn, unlike PhoneService, which has no significant impact, possibly because most customers
+have phone service by default, making it less influential in churn decisions.
+StreamingT V and StreamingMovies show a significant association with churn, suggesting that
+even small differences in how customers use these value-added services can influence whether
+they stay or leave.
+Customers’ decisions to stay or leave seem to depend not just on how much they pay, but also
+on how they pay and the type of contract they have. Since Contract and PaymentMethod show
+a strong link to churn, it’ s clear that company rules around billing and plans can play a big role
+in keeping customers or losing them.
+10To reduce customer churn, the company should focus on improving services and making contracts
+more flexible. Since one out of four customers has already left, it’ s important to give extra support
+to groups like senior citizens and families with dependents, and to strengthen services such as
+OnlineSecurity, T echSupport, and streaming options. Clear and flexible contracts, along with easier
+payment methods, can also help customers feel more satisfied and stay longer.
