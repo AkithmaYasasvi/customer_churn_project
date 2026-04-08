@@ -111,7 +111,9 @@ with tab1:
     st.success("**Tenure Takeaway:** Highest risk is in the first few months. Passing 12 months heavily reduces churn risk.")
     
     c1, c2 = st.columns(2)
-    with c1: st.plotly_chart(px.pie(df, names='Dependents', title="Family Status", hole=0.4, color_discrete_sequence=['#4ade80', '#3b82f6'], template="plotly_dark"), use_container_width=True)
+    with c1: 
+        df['Dependents Status'] = df['Dependents'].map({'Yes': 'Have Dependents', 'No': 'Does Not Have Dependents'})
+        st.plotly_chart(px.pie(df, names='Dependents Status', title="Family Status", hole=0.4, color_discrete_sequence=['#4ade80', '#3b82f6'], template="plotly_dark"), use_container_width=True)
     with c2: 
         df['Senior Text'] = df['SeniorCitizen'].map({1: 'Senior', 0: 'Not Senior'})
         st.plotly_chart(px.bar(df.groupby(['Senior Text', 'Churn']).size().reset_index(name='Count'), x='Senior Text', y='Count', color='Churn', barmode='group', title="Loss by Age Group", template="plotly_dark"), use_container_width=True)
@@ -161,6 +163,38 @@ with tab4:
         pay_df = df.copy(); pay_df['PaymentMethod'] = pay_df['PaymentMethod'].str.replace(' (automatic)', '', regex=False)
         pay_rates = pay_df.groupby('PaymentMethod')['Churn'].apply(lambda x: (x=='Yes').mean() * 100).reset_index(name='Rate')
         st.plotly_chart(px.bar(pay_rates, x='PaymentMethod', y='Rate', color='PaymentMethod', text_auto='.1f', title="Churn Risk by Payment", template="plotly_dark"), use_container_width=True)
+
+    st.markdown("---")
+    st.markdown("### 💰 Pricing & Monthly Payment distribution")
+    
+    # Sensible Interactions
+    p_row1_col1, p_row1_col2 = st.columns([2, 1])
+    with p_row1_col1:
+        min_m, max_m = float(df['MonthlyCharges'].min()), float(df['MonthlyCharges'].max())
+        charge_range = st.slider("Filter by Monthly Charges ($):", min_m, max_m, (min_m, max_m), step=1.0, key="policy_slider")
+    with p_row1_col2:
+        show_points = st.radio("Display Mode:", ["Outliers Only", "All Points", "Suspected Outliers"], horizontal=True)
+        point_map = {"Outliers Only": "outliers", "All Points": "all", "Suspected Outliers": "suspectedoutliers"}
+
+    policy_df = df[(df['MonthlyCharges'] >= charge_range[0]) & (df['MonthlyCharges'] <= charge_range[1])].copy()
+    policy_df['PaymentMethod'] = policy_df['PaymentMethod'].str.replace(' (automatic)', '', regex=False)
+
+    col_box1, col_box2 = st.columns(2)
+    with col_box1:
+        fig1 = px.box(policy_df, x='Contract', y='MonthlyCharges', color='Churn', 
+                      points=point_map[show_points], title="Monthly Charge Distribution by Contract",
+                      color_discrete_sequence=['#3b82f6', '#4ade80'], template="plotly_dark",
+                      notched=True)
+        st.plotly_chart(fig1, use_container_width=True)
+        st.info("💡 **Retention Focus:** Long-term contracts (One/Two Year) significantly reduce churn risk. Incentivize month-to-month users to commit to yearly plans.")
+        
+    with col_box2:
+        fig2 = px.box(policy_df, x='PaymentMethod', y='MonthlyCharges', color='Churn',
+                      points=point_map[show_points], title="Monthly Charge Distribution by Payment",
+                      color_discrete_sequence=['#3b82f6', '#4ade80'], template="plotly_dark",
+                      notched=True)
+        st.plotly_chart(fig2, use_container_width=True)
+        st.success("💡 **Retention Focus:** Automated billing (Credit Card/Bank Transfer) is a major protective factor. Defaulting new customers to automatic payments is advised.")
 
 with tab5:
     st.header("Manage Customers")
